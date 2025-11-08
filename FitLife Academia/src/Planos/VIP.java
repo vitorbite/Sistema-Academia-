@@ -1,15 +1,11 @@
 package Planos;
 
 public class VIP extends Plano{
-    private boolean VIP = true;
-    
+        
     public VIP(){
-        this.valor = 100.50;
+        this.valor = 150.50; // valor de exemplo
+        this.duracao_em_dias = 30;
+        this.VIP = true;
     }
-    
-    public boolean eVIP(){
-        return VIP;
-    }
-
 
 }

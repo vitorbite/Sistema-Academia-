@@ -1,3 +1,4 @@
+import Planos.Plano;
 public class Aluno {
     private String nome;
     private Plano plano;
