@@ -36,7 +36,7 @@ public class FitLifeApp extends JFrame {
         cards.show(container, name);
     }
 
-    public static void main(String[] args) {
+    public void start() {
         SwingUtilities.invokeLater(() -> new FitLifeApp().setVisible(true));
     }
 }
