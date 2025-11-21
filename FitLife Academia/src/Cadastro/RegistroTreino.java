@@ -1,3 +1,4 @@
+package Cadastro;
 // FitLife Academia/src/RegistroTreino.java
 
 import java.time.LocalDate;

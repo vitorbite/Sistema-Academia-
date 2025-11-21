@@ -1,3 +1,4 @@
+package Cadastro;
 import Planos.Plano;
 
 public class AlunoVip extends Aluno {

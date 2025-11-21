@@ -21,12 +21,15 @@ public class FitLifeApp extends JFrame {
         DashboardPanel dashboard = new DashboardPanel(this);
         AlunoFormPanel alunoForm = new AlunoFormPanel(this);
         ProfessorFormPanel professorForm = new ProfessorFormPanel(this);
+        AlunoLogin alunoLogin = new AlunoLogin(this);
+         
 
         // Adiciona ao container
         container.add(login, "login");
         container.add(dashboard, "dashboard");
         container.add(alunoForm, "alunoForm");
         container.add(professorForm, "professorForm");
+        container.add(alunoLogin, "alunoLogin");
 
         add(container);
         showScreen("login");

@@ -1,3 +1,4 @@
+package Cadastro;
 public abstract class Modalidade {
     private String horarios[];
     private Professor professores[];

@@ -1,10 +1,12 @@
 package Menu;
+import Cadastro.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
 class LoginPanel extends JPanel {
+    CadastroAcademico cadastro = new CadastroAcademico();
     public LoginPanel(FitLifeApp app) {
         setLayout(new BorderLayout());
 
@@ -18,20 +20,25 @@ class LoginPanel extends JPanel {
         c.fill = GridBagConstraints.HORIZONTAL;
 
         JLabel lblNome = new JLabel("Nome:");
-        JTextField campoNome = new JTextField(15);
+        JTextField campoCpf = new JTextField(15);
 
         JLabel lblSenha = new JLabel("Senha:");
         JPasswordField campoSenha = new JPasswordField(15);
 
         JButton btnConfirmar = new JButton("Confirmar");
         btnConfirmar.addActionListener((ActionEvent e) -> {
-            String nome = campoNome.getText().trim();
+
+            // Informações de LOGIN
+            String cpf = campoCpf.getText().trim();
             String senha = new String(campoSenha.getPassword());
-            if (nome.equals("admin") && senha.equals("123")) {
-                JOptionPane.showMessageDialog(this, "Login realizado com sucesso!");
-                app.showScreen("dashboard");
-            } else {
-                JOptionPane.showMessageDialog(this, "Nome ou senha incorretos.");
+
+            for(Aluno aluno : cadastro.getAlunos()){
+                if (cpf.equals(aluno.getCpf()) && senha.equals("123")) {
+                    JOptionPane.showMessageDialog(this, "Login realizado com sucesso!");
+                    app.showScreen("dashboard");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Nome ou senha incorretos.");
+                }
             }
         });
 
@@ -40,7 +47,7 @@ class LoginPanel extends JPanel {
         form.add(lblNome, c);
         c.gridx = 1;
         c.gridy = 0;
-        form.add(campoNome, c);
+        form.add(campoCpf, c);
         c.gridx = 0;
         c.gridy = 1;
         form.add(lblSenha, c);

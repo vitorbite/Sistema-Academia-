@@ -1,8 +1,17 @@
-public class Academia {
-    private Aluno alunos[];
-    private Professor professores[];
+import java.util.HashMap;
 
-    public void VerHistoricoDeTreinos(){
+import Cadastro.Aluno;
+import Cadastro.CadastroAcademico;
+import Cadastro.Professor;
+import Cadastro.RegistroTreino;
+
+public class Academia {
+    private HashMap<String, String> alunos = new HashMap<>();
+    private Professor professores[];
+    CadastroAcademico cadastroAcademico = new CadastroAcademico();
+    
+    public void VerHistoricoDeTreinos(Aluno aluno){
+        
         System.out.println("--- Histórico de Treinos de " + aluno.getNome() + " ---");
             if (aluno.getHistoricoTreinos().isEmpty()) {
             System.out.println("Nenhum registro de treino encontrado.");
