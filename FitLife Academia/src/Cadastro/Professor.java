@@ -1,4 +1,5 @@
 package Cadastro;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,8 +8,8 @@ public class Professor extends Pessoa {
     private List<String> tiposExercicio;
     private List<String> horarios;
 
-    public Professor(String nome, String cpf) {
-        super(nome, cpf);
+    public Professor(String nome, int idade, String cpf) {
+        super(nome, idade, cpf);
         this.tiposExercicio = new ArrayList<>();
         this.horarios = new ArrayList<>();
     }

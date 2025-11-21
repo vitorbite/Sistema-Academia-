@@ -5,6 +5,7 @@ import java.util.ArrayList; // Importe ArrayList
 import java.util.List; // Importe List
 
 public class Aluno extends Pessoa {
+    private String senha;
     private Plano plano;
     private int frequencia = 0;
     private Modalidade modalidades[];
@@ -14,8 +15,9 @@ public class Aluno extends Pessoa {
     // NOVO: Histórico de Treinos
     private List<RegistroTreino> historicoTreinos;
 
-    public Aluno(String nome, String cpf, Plano plano) {
-        super(nome, cpf);
+    public Aluno(String nome, int idade, String cpf, String senha, Plano plano) {
+        super(nome, idade, cpf);
+        this.senha = senha;
         this.plano = plano;
         this.modalidades = new Modalidade[MAX_MODALIDADES];
         this.historicoTreinos = new ArrayList<>();
@@ -65,6 +67,12 @@ public class Aluno extends Pessoa {
     // NOVO: Getter para o histórico de treinos
     public List<RegistroTreino> getHistoricoTreinos() {
         return historicoTreinos;
+    }
+    public String getSenha() {
+        return senha;
+    }
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public Plano getPlano() {

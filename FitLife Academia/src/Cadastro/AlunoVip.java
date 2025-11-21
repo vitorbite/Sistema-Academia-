@@ -3,8 +3,8 @@ import Planos.Plano;
 
 public class AlunoVip extends Aluno {
 
-    public AlunoVip(String nome, String cpf, Plano plano) {
-        super(nome, cpf, plano);
+    public AlunoVip(String nome, int idade, String cpf, Plano plano) {
+        super(nome, idade, cpf, plano);
 
         if (!plano.eVIP()) {
             throw new IllegalArgumentException("O plano informado não é VIP para o AlunoVip.");

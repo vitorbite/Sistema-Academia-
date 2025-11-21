@@ -1,4 +1,5 @@
 package Menu;
+
 import Cadastro.*;
 
 import javax.swing.*;
@@ -6,8 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 class LoginPanel extends JPanel {
-    CadastroAcademico cadastro = new CadastroAcademico();
-    public LoginPanel(FitLifeApp app) {
+    public LoginPanel(FitLifeApp app, CadastroAcademico cadastro) {
         setLayout(new BorderLayout());
 
         JLabel titulo = new JLabel("FitLife", JLabel.CENTER);
@@ -19,7 +19,7 @@ class LoginPanel extends JPanel {
         c.insets = new Insets(6, 8, 6, 8);
         c.fill = GridBagConstraints.HORIZONTAL;
 
-        JLabel lblNome = new JLabel("Nome:");
+        JLabel lblNome = new JLabel("CPF:");
         JTextField campoCpf = new JTextField(15);
 
         JLabel lblSenha = new JLabel("Senha:");
@@ -31,11 +31,14 @@ class LoginPanel extends JPanel {
             // Informações de LOGIN
             String cpf = campoCpf.getText().trim();
             String senha = new String(campoSenha.getPassword());
-
-            for(Aluno aluno : cadastro.getAlunos()){
-                if (cpf.equals(aluno.getCpf()) && senha.equals("123")) {
+            if (cpf.equals("academia") && senha.equals("123")) {
+                JOptionPane.showMessageDialog(this, "Login realizado com sucesso!");
+                app.showScreen("dashboard");
+            }
+            for (Aluno aluno : cadastro.getAlunos()) {
+                if (cpf.equals(aluno.getCpf()) && senha.equals(aluno.getSenha())) {
                     JOptionPane.showMessageDialog(this, "Login realizado com sucesso!");
-                    app.showScreen("dashboard");
+                    app.showScreen("alunoLogin");
                 } else {
                     JOptionPane.showMessageDialog(this, "Nome ou senha incorretos.");
                 }

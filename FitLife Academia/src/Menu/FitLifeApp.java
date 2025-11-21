@@ -1,5 +1,5 @@
 package Menu;
-
+import Cadastro.*;
 import javax.swing.*;
 import java.awt.*;
 
@@ -17,9 +17,10 @@ public class FitLifeApp extends JFrame {
         container = new JPanel(cards);
 
         // Telas
-        LoginPanel login = new LoginPanel(this);
+        CadastroAcademico cadastro = CadastroAcademico.getInstance();
+        LoginPanel login = new LoginPanel(this, cadastro);
         DashboardPanel dashboard = new DashboardPanel(this);
-        AlunoFormPanel alunoForm = new AlunoFormPanel(this);
+        AlunoFormPanel alunoForm = new AlunoFormPanel(this, cadastro);
         ProfessorFormPanel professorForm = new ProfessorFormPanel(this);
         AlunoLogin alunoLogin = new AlunoLogin(this);
          

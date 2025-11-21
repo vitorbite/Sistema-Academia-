@@ -7,16 +7,25 @@ public class CadastroAcademico {
 
     private List<Aluno> alunos;
     private List<Professor> professores;
+    private static CadastroAcademico instance;
 
     public CadastroAcademico() {
         this.alunos = new ArrayList<>();
         this.professores = new ArrayList<>();
     }
 
-    public void cadastrarAluno(Aluno aluno) {
+    public static CadastroAcademico getInstance() {
+        if (instance == null) {
+            instance = new CadastroAcademico();
+        }
+        return instance;
+    }
+
+    public Aluno cadastrarAluno(Aluno aluno) {
         if (aluno != null) {
             alunos.add(aluno);
         }
+        return aluno;
     }
 
     public void cadastrarProfessor(Professor professor) {

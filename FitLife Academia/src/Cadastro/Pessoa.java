@@ -4,9 +4,11 @@ public abstract class Pessoa {
 
     private String nome;
     private String cpf;
+    private int idade;
 
-    public Pessoa(String nome, String cpf) {
+    public Pessoa(String nome, int idade, String cpf) {
         this.nome = nome;
+        this.idade = idade;
         this.cpf = cpf;
     }
 
