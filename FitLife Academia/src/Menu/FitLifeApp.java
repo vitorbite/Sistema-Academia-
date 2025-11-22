@@ -28,7 +28,6 @@ public class FitLifeApp extends JFrame {
         DashboardPanel dashboard = new DashboardPanel(this);
         AlunoFormPanel alunoForm = new AlunoFormPanel(this, cadastro);
         ProfessorFormPanel professorForm = new ProfessorFormPanel(this, cadastro);
-        AlunoLogin alunoLogin = new AlunoLogin(this);
         PlanoSelectionPanel planoPanel = new PlanoSelectionPanel(this, cadastro);
         studentDashboard = new StudentDashboardPanel(this, cadastro);
         professorDashboard = new ProfessorDashboardPanel(this, cadastro);
@@ -40,7 +39,6 @@ public class FitLifeApp extends JFrame {
         container.add(dashboard, "dashboard");
         container.add(alunoForm, "alunoForm");
         container.add(professorForm, "professorForm");
-        container.add(alunoLogin, "alunoLogin");
         container.add(planoPanel, "planos");
         container.add(studentDashboard, "studentDashboard");
         container.add(professorDashboard, "professorDashboard");

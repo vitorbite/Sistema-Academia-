@@ -7,12 +7,10 @@ import java.awt.*;
 
 public class ProfessorDashboardPanel extends JPanel {
     private FitLifeApp app;
-    private CadastroAcademico cadastro;
     private JLabel lblInfo;
 
     public ProfessorDashboardPanel(FitLifeApp app, CadastroAcademico cadastro) {
         this.app = app;
-        this.cadastro = cadastro;
         setLayout(new BorderLayout());
 
         JLabel titulo = new JLabel("Área do Professor", JLabel.CENTER);
@@ -24,13 +22,10 @@ public class ProfessorDashboardPanel extends JPanel {
         add(lblInfo, BorderLayout.CENTER);
 
         JPanel actions = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JButton btnEditar = new JButton("Editar Cadastro");
         JButton btnSair = new JButton("Sair");
-        actions.add(btnEditar);
         actions.add(btnSair);
         add(actions, BorderLayout.SOUTH);
 
-        btnEditar.addActionListener(e -> app.showScreen("professorForm"));
         btnSair.addActionListener(e -> app.showScreen("login"));
     }
 
