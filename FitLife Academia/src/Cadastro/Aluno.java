@@ -1,8 +1,8 @@
 package Cadastro;
 
 import Planos.Plano;
-import java.util.ArrayList; // Importe ArrayList
-import java.util.List; // Importe List
+import java.util.ArrayList; 
+import java.util.List; 
 
 import Modalidades.Modalidade;
 
@@ -43,10 +43,10 @@ public class Aluno extends Pessoa {
 
     }
 
-    // NOVO: Adicionar um novo registro de treino
+    
     public void adicionarRegistroTreino(RegistroTreino registro) {
         this.historicoTreinos.add(registro);
-        this.frequencia++; // Incrementa a frequência a cada novo registro
+        this.frequencia++; 
     }
 
     public void alertaDeFrequenciaBaixa() {
@@ -64,7 +64,7 @@ public class Aluno extends Pessoa {
         }
     }
 
-    // NOVO: Getter para o histórico de treinos
+    
     public List<RegistroTreino> getHistoricoTreinos() {
         return historicoTreinos;
     }
