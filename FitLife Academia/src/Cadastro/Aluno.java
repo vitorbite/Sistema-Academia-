@@ -4,11 +4,13 @@ import Planos.Plano;
 import java.util.ArrayList; 
 import java.util.List; 
 
+import Modalidades.Modalidade;
+
 public class Aluno extends Pessoa {
     private String senha;
     private Plano plano;
     private int frequencia = 0;
-    private Modalidade modalidades[];
+    private ArrayList<Modalidade> modalidades;
 
     private static final int MAX_MODALIDADES = 10;
     private List<RegistroTreino> historicoTreinos;
@@ -17,7 +19,7 @@ public class Aluno extends Pessoa {
         super(nome, idade, cpf);
         this.senha = senha;
         this.plano = plano;
-        this.modalidades = new Modalidade[MAX_MODALIDADES];
+        this.modalidades = new ArrayList<>();
         this.historicoTreinos = new ArrayList<>();
     }
 
@@ -31,9 +33,9 @@ public class Aluno extends Pessoa {
         if (modalidade == null)
             return;
 
-        for (int i = 0; i < modalidades.length; i++) {
-            if (modalidades[i] == null) {
-                modalidades[i] = modalidade;
+        for (int i = 0; i < modalidades.size(); i++) {
+            if (modalidades.get(i) == null) {
+                modalidades.add(i, modalidade);
                 return;
             }
         }
@@ -89,7 +91,7 @@ public class Aluno extends Pessoa {
         this.frequencia = frequencia;
     }
 
-    public Modalidade[] getModalidades() {
+    public ArrayList<Modalidade> getModalidades() {
         return modalidades;
     }
 

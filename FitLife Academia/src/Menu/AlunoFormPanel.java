@@ -2,16 +2,13 @@ package Menu;
 
 import Planos.*;
 import Cadastro.*;
-import javax.swing.text.PlainDocument;
-import Planos.Plano;
-import Planos.VIP;
+import Modalidades.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
 class AlunoFormPanel extends JPanel {
-    CadastroAcademico cadastro = new CadastroAcademico();
 
     public AlunoFormPanel(FitLifeApp app, CadastroAcademico cadastro) {
         setLayout(new BorderLayout());
@@ -31,15 +28,29 @@ class AlunoFormPanel extends JPanel {
         JTextField cpf = new JTextField(14);
         JTextField senha = new JTextField(20);
         JTextField confirmarSenha = new JTextField(20);
-        JComboBox<String> plano = new JComboBox<>(new String[] { "Mensal", "VIP", "Anual" });
-        // JTextArea observacoes = new JTextArea(4, 20);
-        // observacoes.setLineWrap(true);
-        // observacoes.setWrapStyleWord(true);
-        // JScrollPane obsScroll = new JScrollPane(observacoes);
+        JPanel modalidadesPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        modalidadesPanel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+
+        JCheckBox cbYoga = new JCheckBox("Yoga");
+        JCheckBox cbMusculacao = new JCheckBox("Musculação");
+        JCheckBox cbPilates = new JCheckBox("Pilates");
+
+        modalidadesPanel.add(cbYoga);
+        modalidadesPanel.add(cbMusculacao);
+        modalidadesPanel.add(cbPilates);
 
         JButton salvar = new JButton("Salvar");
         JButton limpar = new JButton("Limpar");
         JButton voltar = new JButton("Voltar");
+
+        nome.setText("");
+        idade.setText("");
+        cpf.setText("");
+        senha.setText("");
+        confirmarSenha.setText("");
+        cbYoga.setSelected(false);
+        cbMusculacao.setSelected(false);
+        cbPilates.setSelected(false);
 
         salvar.addActionListener((ActionEvent e) -> {
             String n = nome.getText().trim();
@@ -47,24 +58,30 @@ class AlunoFormPanel extends JPanel {
             String cpfVal = cpf.getText().trim();
             String s = senha.getText().trim();
             String cS = confirmarSenha.getText().trim();
-            String p = (String) plano.getSelectedItem();
+
             if (n.isEmpty() || i.isEmpty() || cpfVal.isEmpty() || !s.equals(cS)) {
                 JOptionPane.showMessageDialog(this, "Preencha Nome, Idade, CPF e Senha corretamente.");
                 return;
             }
+            if (!cbYoga.isSelected() && !cbMusculacao.isSelected() && !cbPilates.isSelected()) {
+                JOptionPane.showMessageDialog(this, "Selecione pelo menos uma modalidade!");
+                return;
+            }
             Aluno aluno = cadastro.cadastrarAluno(new Aluno(n, Integer.parseInt(i), cpfVal, s, new Plano()));
-            JOptionPane.showMessageDialog(this, "Aluno salvo:\n" +
-                    "Nome: " + n + "\nIdade: " + i + "\nCPF: " + cpfVal + "\nPlano: " + p);
             // Aqui você pode integrar com sua camada de dados
-            if (p.equalsIgnoreCase("Mensal")) {
-                aluno.setPlano(new Mensal());
+            if (cbYoga.isSelected()) {
+                aluno.inscreverEmModalidade(new Yoga());
             }
-            if (p.equalsIgnoreCase("VIP")) {
-                aluno.setPlano(new VIP());
+            if (cbMusculacao.isSelected()) {
+                aluno.inscreverEmModalidade(new Musculacao());
             }
-            if (p.equalsIgnoreCase("Anual")) {
-                aluno.setPlano(new Anual());
+            if (cbPilates.isSelected()) {
+                aluno.inscreverEmModalidade(new Pilates());
             }
+
+            // Armazena o aluno atual na aplicação e navega para seleção de plano
+            app.setCurrentAluno(aluno);
+            app.showScreen("planos");
         });
 
         limpar.addActionListener(e -> {
@@ -73,11 +90,12 @@ class AlunoFormPanel extends JPanel {
             cpf.setText("");
             senha.setText("");
             confirmarSenha.setText("");
-            // observacoes.setText("");
-            plano.setSelectedIndex(0);
+            cbYoga.setSelected(false);
+            cbMusculacao.setSelected(false);
+            cbPilates.setSelected(false);
         });
 
-        voltar.addActionListener(e -> app.showScreen("dashboard"));
+        voltar.addActionListener(e -> app.showScreen("inscrever"));
 
         // Grid
         int row = 0;
@@ -102,12 +120,13 @@ class AlunoFormPanel extends JPanel {
         c.gridy = row++;
         form.add(cpf, c);
 
+        // Adicionar no grid:
         c.gridx = 0;
         c.gridy = row;
-        form.add(new JLabel("Plano:"), c);
+        form.add(new JLabel("Modalidades:"), c);
         c.gridx = 1;
         c.gridy = row++;
-        form.add(plano, c);
+        form.add(modalidadesPanel, c);
 
         c.gridx = 0;
         c.gridy = row;
