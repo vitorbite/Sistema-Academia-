@@ -1,8 +1,8 @@
 package Cadastro;
 
 import Planos.Plano;
-import java.util.ArrayList; // Importe ArrayList
-import java.util.List; // Importe List
+import java.util.ArrayList; 
+import java.util.List; 
 
 public class Aluno extends Pessoa {
     private String senha;
@@ -11,8 +11,6 @@ public class Aluno extends Pessoa {
     private Modalidade modalidades[];
 
     private static final int MAX_MODALIDADES = 10;
-    
-    // NOVO: Histórico de Treinos
     private List<RegistroTreino> historicoTreinos;
 
     public Aluno(String nome, int idade, String cpf, String senha, Plano plano) {
@@ -43,10 +41,10 @@ public class Aluno extends Pessoa {
         System.out.println("Não foi possível inscrever: limite de modalidades atingido.");
     }
 
-    // NOVO: Adicionar um novo registro de treino
+    
     public void adicionarRegistroTreino(RegistroTreino registro) {
         this.historicoTreinos.add(registro);
-        this.frequencia++; // Incrementa a frequência a cada novo registro
+        this.frequencia++; 
     }
 
     public void alertaDeFrequenciaBaixa() {
@@ -64,7 +62,7 @@ public class Aluno extends Pessoa {
         }
     }
 
-    // NOVO: Getter para o histórico de treinos
+    
     public List<RegistroTreino> getHistoricoTreinos() {
         return historicoTreinos;
     }
