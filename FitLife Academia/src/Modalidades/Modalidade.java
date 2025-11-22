@@ -1,4 +1,7 @@
-package Cadastro;
+package Modalidades;
+
+import Cadastro.Professor;
+
 public abstract class Modalidade {
     private String horarios[];
     private Professor professores[];

@@ -3,6 +3,8 @@ package Cadastro;
 
 import java.time.LocalDate;
 
+import Modalidades.Modalidade;
+
 public class RegistroTreino {
     private LocalDate data;
     private Modalidade modalidade;

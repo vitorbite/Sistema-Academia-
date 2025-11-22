@@ -3,6 +3,8 @@ package Menu;
 import Cadastro.*;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
@@ -19,7 +21,7 @@ class LoginPanel extends JPanel {
         c.insets = new Insets(6, 8, 6, 8);
         c.fill = GridBagConstraints.HORIZONTAL;
 
-        JLabel lblNome = new JLabel("CPF:");
+        JLabel lblCpf = new JLabel("CPF:");
         JTextField campoCpf = new JTextField(15);
 
         JLabel lblSenha = new JLabel("Senha:");
@@ -44,10 +46,16 @@ class LoginPanel extends JPanel {
                 }
             }
         });
+        JLabel titulo2 = new JLabel("Ainda não sou membro", JLabel.CENTER);
+        titulo2.setFont(new Font("Arial", Font.BOLD, 28));
 
+        JButton btnInscrever = new JButton("Inscrever-se");
+        btnInscrever.addActionListener((ActionEvent e) -> {
+            app.showScreen("inscrever");
+        });
         c.gridx = 0;
         c.gridy = 0;
-        form.add(lblNome, c);
+        form.add(lblCpf, c);
         c.gridx = 1;
         c.gridy = 0;
         form.add(campoCpf, c);
@@ -65,6 +73,15 @@ class LoginPanel extends JPanel {
         c.anchor = GridBagConstraints.CENTER;
         form.add(btnConfirmar, c);
 
+        c.gridx = 0;
+        c.gridy = 4;
+        form.add(new JPanel(), c);
+
+        c.gridy = 5;
+        form.add(titulo2, c);
+
+        c.gridy = 6;
+        form.add(btnInscrever, c);
         add(form, BorderLayout.CENTER);
     }
 }
