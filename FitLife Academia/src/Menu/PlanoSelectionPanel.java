@@ -31,7 +31,7 @@ public class PlanoSelectionPanel extends JPanel {
         vipPanel.add(btnVIP, BorderLayout.SOUTH);
 
         // Anual
-        JPanel anualPanel = createCard("Anual", "R$ 95.90\n365 dias");
+        JPanel anualPanel = createCard("Anual", "R$ 95.90 Mensalmente\n365 dias");
         JButton btnAnual = new JButton("Selecionar");
         anualPanel.add(btnAnual, BorderLayout.SOUTH);
 
