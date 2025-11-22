@@ -68,17 +68,20 @@ class ProfessorFormPanel extends JPanel {
             }
 
             cadastro.cadastrarProfessor(p);
+                // Atualiza dashboard do professor
+                app.setCurrentProfessor(p);
+                app.refreshProfessorDashboard();
 
                 JOptionPane.showMessageDialog(this, "Professor salvo:\n" +
                     "Nome: " + n + "\nRegistro: " + reg + "\nEspecialidade: " + esp + "\nHorário: "
                     + (horario != null ? horario : "(não informado)"));
 
-            // Limpa campos após salvar
-            nome.setText("");
-            registro.setText("");
-            especialidade.setText("");
-            horarioInicio.setText("");
-            horarioFim.setText("");
+                // Limpa campos após salvar
+                nome.setText("");
+                registro.setText("");
+                especialidade.setText("");
+                horarioInicio.setText("");
+                horarioFim.setText("");
         });
 
         limpar.addActionListener(e -> {

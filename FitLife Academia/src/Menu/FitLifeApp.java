@@ -77,6 +77,15 @@ public class FitLifeApp extends JFrame {
         cards.show(container, "professorDashboard");
     }
 
+    // Refresh dashboards without changing a tela
+    public void refreshStudentDashboard() {
+        if (studentDashboard != null) studentDashboard.refresh();
+    }
+
+    public void refreshProfessorDashboard() {
+        if (professorDashboard != null) professorDashboard.refresh();
+    }
+
     public void start() {
         SwingUtilities.invokeLater(() -> new FitLifeApp().setVisible(true));
     }

@@ -53,6 +53,7 @@ public class PlanoSelectionPanel extends JPanel {
             if (a != null) {
                 a.setPlano(new Mensal());
                 JOptionPane.showMessageDialog(this, "Plano Mensal aplicado para " + a.getNome());
+                app.refreshStudentDashboard();
                 app.showScreen("studentDashboard");
             }
         });
@@ -62,6 +63,7 @@ public class PlanoSelectionPanel extends JPanel {
             if (a != null) {
                 a.setPlano(new VIP());
                 JOptionPane.showMessageDialog(this, "Plano VIP aplicado para " + a.getNome());
+                app.refreshStudentDashboard();
                 app.showScreen("studentDashboard");
             }
         });
@@ -71,6 +73,7 @@ public class PlanoSelectionPanel extends JPanel {
             if (a != null) {
                 a.setPlano(new Anual());
                 JOptionPane.showMessageDialog(this, "Plano Anual aplicado para " + a.getNome());
+                app.refreshStudentDashboard();
                 app.showScreen("studentDashboard");
             }
         });
