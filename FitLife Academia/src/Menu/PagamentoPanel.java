@@ -2,8 +2,9 @@ package Menu;
 
 import Cadastro.Aluno;
 import Cadastro.CadastroAcademico;
-import Menu.Financeiro.Fatura;
-import Menu.Financeiro.GestorFinanceiro;
+import Financeiro.Fatura;
+import Financeiro.GestorFinanceiro;
+import Financeiro.StatusPagamento;
 
 import javax.swing.*;
 import java.awt.*;

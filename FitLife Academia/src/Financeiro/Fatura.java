@@ -1,4 +1,4 @@
-package Menu.Financeiro;
+package Financeiro;
 
 import Cadastro.Aluno;
 import Planos.Plano;

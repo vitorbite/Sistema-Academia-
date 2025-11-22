@@ -1,4 +1,4 @@
-package Menu.Financeiro;
+package Financeiro;
 
 public enum StatusPagamento {
     PENDENTE, // Fatura gerada, mas ainda não paga.

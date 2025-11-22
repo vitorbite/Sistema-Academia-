@@ -22,13 +22,15 @@ class DashboardPanel extends JPanel {
         JButton btnPagamentos = new JButton("Gestão de Pagamentos");
         btnPagamentos.addActionListener((ActionEvent e) -> app.showScreen("pagamentos"));
 
-        JButton btnPlanos = new JButton("Planos (em breve)");
+        JButton btnPlanos = new JButton("Planos"); // Removida a marcação "(em breve)"
+        btnPlanos.addActionListener((ActionEvent e) -> app.showScreen("planos")); // Adicionada a ação de navegação
+        
         JButton btnSair = new JButton("Sair");
         btnSair.addActionListener(e -> app.showScreen("login"));
 
         menu.add(btnAlunos);
         menu.add(btnProfessores);
-        menu.add(btnPlanos);
+        menu.add(btnPlanos); // Botão funcional
         menu.add(btnSair);
 
         JPanel center = new JPanel(new FlowLayout(FlowLayout.CENTER));

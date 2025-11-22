@@ -3,8 +3,8 @@ package Cadastro;
 import Planos.Plano;
 import java.util.ArrayList; 
 import java.util.List;
-import Menu.Financeiro.Fatura; 
 
+import Financeiro.Fatura;
 import Modalidades.Modalidade;
 
 public class Aluno extends Pessoa {
