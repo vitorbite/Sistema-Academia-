@@ -13,6 +13,8 @@ public class Aluno extends Pessoa {
     private ArrayList<Modalidade> modalidades;
 
     private static final int MAX_MODALIDADES = 10;
+
+    // NOVO: Histórico de Treinos
     private List<RegistroTreino> historicoTreinos;
 
     public Aluno(String nome, int idade, String cpf, String senha, Plano plano) {
@@ -33,14 +35,12 @@ public class Aluno extends Pessoa {
         if (modalidade == null)
             return;
 
-        for (int i = 0; i < modalidades.size(); i++) {
-            if (modalidades.get(i) == null) {
-                modalidades.add(i, modalidade);
-                return;
-            }
+        if (modalidades.size() == 10) {
+            return;
         }
 
-        System.out.println("Não foi possível inscrever: limite de modalidades atingido.");
+        modalidades.add(modalidade);
+
     }
 
     
@@ -68,9 +68,11 @@ public class Aluno extends Pessoa {
     public List<RegistroTreino> getHistoricoTreinos() {
         return historicoTreinos;
     }
+
     public String getSenha() {
         return senha;
     }
+
     public void setSenha(String senha) {
         this.senha = senha;
     }
