@@ -4,13 +4,11 @@ import Planos.*;
 import Cadastro.*;
 import Modalidades.*;
 
-import javax.swing.text.PlainDocument;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
 class AlunoFormPanel extends JPanel {
-    CadastroAcademico cadastro = new CadastroAcademico();
 
     public AlunoFormPanel(FitLifeApp app, CadastroAcademico cadastro) {
         setLayout(new BorderLayout());
@@ -45,6 +43,15 @@ class AlunoFormPanel extends JPanel {
         JButton limpar = new JButton("Limpar");
         JButton voltar = new JButton("Voltar");
 
+        nome.setText("");
+        idade.setText("");
+        cpf.setText("");
+        senha.setText("");
+        confirmarSenha.setText("");
+        cbYoga.setSelected(false);
+        cbMusculacao.setSelected(false);
+        cbPilates.setSelected(false);
+
         salvar.addActionListener((ActionEvent e) -> {
             String n = nome.getText().trim();
             String i = idade.getText().trim();
@@ -72,8 +79,9 @@ class AlunoFormPanel extends JPanel {
                 aluno.inscreverEmModalidade(new Pilates());
             }
 
-            JOptionPane.showMessageDialog(this, "Aluno salvo:\n" +
-                    "Nome: " + n + "\nIdade: " + i + "\nCPF: " + cpfVal);
+            // Armazena o aluno atual na aplicação e navega para seleção de plano
+            app.setCurrentAluno(aluno);
+            app.showScreen("planos");
         });
 
         limpar.addActionListener(e -> {
