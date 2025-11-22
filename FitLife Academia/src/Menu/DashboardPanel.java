@@ -19,6 +19,9 @@ class DashboardPanel extends JPanel {
         JButton btnProfessores = new JButton("Cadastro de Professores");
         btnProfessores.addActionListener((ActionEvent e) -> app.showScreen("professorForm"));
 
+        JButton btnPagamentos = new JButton("Gestão de Pagamentos");
+        btnPagamentos.addActionListener((ActionEvent e) -> app.showScreen("pagamentos"));
+
         JButton btnPlanos = new JButton("Planos (em breve)");
         JButton btnSair = new JButton("Sair");
         btnSair.addActionListener(e -> app.showScreen("login"));

@@ -26,7 +26,7 @@ public class FitLifeApp extends JFrame {
         AlunoFormPanel alunoForm = new AlunoFormPanel(this, cadastro);
         ProfessorFormPanel professorForm = new ProfessorFormPanel(this, cadastro);
         AlunoLogin alunoLogin = new AlunoLogin(this);
-        PlanoSelectionPanel planoPanel = new PlanoSelectionPanel(this, cadastro);
+        PagamentoPanel pagamentoPanel = new PagamentoPanel(this, cadastro);
          
 
         // Adiciona ao container
@@ -36,7 +36,7 @@ public class FitLifeApp extends JFrame {
         container.add(alunoForm, "alunoForm");
         container.add(professorForm, "professorForm");
         container.add(alunoLogin, "alunoLogin");
-        container.add(planoPanel, "planos");
+        container.add(pagamentoPanel, "pagamentos");
 
         add(container);
         showScreen("login");
