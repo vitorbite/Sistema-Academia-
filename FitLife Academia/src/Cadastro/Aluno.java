@@ -35,6 +35,9 @@ public class Aluno extends Pessoa {
         if (modalidade == null)
             return;
 
+        if (modalidades.size() == MAX_MODALIDADES) {
+            return;
+        }
         for (int i = 0; i < modalidades.size(); i++) {
             if (modalidades.get(i) == null) {
                 modalidades.add(i, modalidade);

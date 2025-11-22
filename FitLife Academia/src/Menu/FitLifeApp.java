@@ -8,6 +8,9 @@ public class FitLifeApp extends JFrame {
     private JPanel container;
     private CadastroAcademico cadastro;
     private Cadastro.Aluno currentAluno;
+    private Cadastro.Professor currentProfessor;
+    private StudentDashboardPanel studentDashboard;
+    private ProfessorDashboardPanel professorDashboard;
 
     public FitLifeApp() {
         super("FitLife");
@@ -27,6 +30,8 @@ public class FitLifeApp extends JFrame {
         ProfessorFormPanel professorForm = new ProfessorFormPanel(this, cadastro);
         AlunoLogin alunoLogin = new AlunoLogin(this);
         PlanoSelectionPanel planoPanel = new PlanoSelectionPanel(this, cadastro);
+        studentDashboard = new StudentDashboardPanel(this, cadastro);
+        professorDashboard = new ProfessorDashboardPanel(this, cadastro);
          
 
         // Adiciona ao container
@@ -37,6 +42,8 @@ public class FitLifeApp extends JFrame {
         container.add(professorForm, "professorForm");
         container.add(alunoLogin, "alunoLogin");
         container.add(planoPanel, "planos");
+        container.add(studentDashboard, "studentDashboard");
+        container.add(professorDashboard, "professorDashboard");
 
         add(container);
         showScreen("login");
@@ -52,6 +59,24 @@ public class FitLifeApp extends JFrame {
 
     public Cadastro.Aluno getCurrentAluno() {
         return this.currentAluno;
+    }
+
+    public void setCurrentProfessor(Cadastro.Professor professor) {
+        this.currentProfessor = professor;
+    }
+
+    public Cadastro.Professor getCurrentProfessor() {
+        return this.currentProfessor;
+    }
+
+    public void showStudentDashboard() {
+        if (studentDashboard != null) studentDashboard.refresh();
+        cards.show(container, "studentDashboard");
+    }
+
+    public void showProfessorDashboard() {
+        if (professorDashboard != null) professorDashboard.refresh();
+        cards.show(container, "professorDashboard");
     }
 
     public void start() {
