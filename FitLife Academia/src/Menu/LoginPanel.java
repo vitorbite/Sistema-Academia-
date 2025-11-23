@@ -29,19 +29,16 @@ class LoginPanel extends JPanel {
         JButton btnConfirmar = new JButton("Confirmar");
         btnConfirmar.addActionListener((ActionEvent e) -> {
 
-            // Informações de LOGIN
             String cpf = campoCpf.getText().trim();
             String senha = new String(campoSenha.getPassword());
 
-            // Admin shortcut
             if (cpf.equals("academia") && senha.equals("123")) {
                 JOptionPane.showMessageDialog(this, "Login de administrador realizado com sucesso!");
                 // admin: não seta aluno nem professor; vai para painel administrativo
                 app.showScreen("adminDashboard");
                 return;
             }
-
-            // Tenta encontrar aluno
+            
             Aluno aluno = cadastro.buscarAlunoPorCpf(cpf);
             if (aluno != null) {
                 if (senha.equals(aluno.getSenha())) {
@@ -54,7 +51,6 @@ class LoginPanel extends JPanel {
                 return;
             }
 
-            // Tenta encontrar professor (aqui, sem senha)
             Professor professor = cadastro.buscarProfessorPorCpf(cpf);
             if (professor != null) {
                 app.setCurrentProfessor(professor);
