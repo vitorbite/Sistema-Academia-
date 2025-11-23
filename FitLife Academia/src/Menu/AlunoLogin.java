@@ -1,10 +1,11 @@
 package Menu;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-class DashboardPanel extends JPanel {
-    public DashboardPanel(FitLifeApp app) {
+public class AlunoLogin extends JPanel{
+    public AlunoLogin(FitLifeApp app) {
         setLayout(new BorderLayout());
 
         JLabel titulo = new JLabel("FitLife - Dashboard", JLabel.CENTER);
@@ -19,17 +20,14 @@ class DashboardPanel extends JPanel {
         JButton btnProfessores = new JButton("Cadastro de Professores");
         btnProfessores.addActionListener((ActionEvent e) -> app.showScreen("professorForm"));
 
-        JButton btnPagamentos = new JButton("Gestão de Pagamentos");
-        btnPagamentos.addActionListener((ActionEvent e) -> app.showScreen("pagamentos"));
-
         JButton btnPlanos = new JButton("Planos"); // Removida a marcação "(em breve)"
         btnPlanos.addActionListener((ActionEvent e) -> app.showScreen("planos")); // Adicionada a ação de navegação
         
         JButton btnSair = new JButton("Sair");
         btnSair.addActionListener(e -> app.showScreen("login"));
 
-        menu.add(btnAlunos);
-        menu.add(btnProfessores);
+        // menu.add(btnAlunos);
+        // menu.add(btnProfessores);
         menu.add(btnPlanos); // Botão funcional
         menu.add(btnSair);
 

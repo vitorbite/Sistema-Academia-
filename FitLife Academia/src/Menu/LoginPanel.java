@@ -3,6 +3,7 @@ package Menu;
 import Cadastro.*;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -32,37 +33,18 @@ class LoginPanel extends JPanel {
             // Informações de LOGIN
             String cpf = campoCpf.getText().trim();
             String senha = new String(campoSenha.getPassword());
-
-            // Admin shortcut
             if (cpf.equals("academia") && senha.equals("123")) {
                 JOptionPane.showMessageDialog(this, "Login realizado com sucesso!");
                 app.showScreen("dashboard");
-                return;
             }
-
-            // Tenta encontrar aluno
-            Aluno aluno = cadastro.buscarAlunoPorCpf(cpf);
-            if (aluno != null) {
-                if (senha.equals(aluno.getSenha())) {
-                    app.setCurrentAluno(aluno);
-                    JOptionPane.showMessageDialog(this, "Login do aluno realizado com sucesso!");
-                    app.showStudentDashboard();
+            for (Aluno aluno : cadastro.getAlunos()) {
+                if (cpf.equals(aluno.getCpf()) && senha.equals(aluno.getSenha())) {
+                    JOptionPane.showMessageDialog(this, "Login realizado com sucesso!");
+                    app.showScreen("alunoLogin");
                 } else {
-                    JOptionPane.showMessageDialog(this, "Senha incorreta para o CPF informado.");
+                    JOptionPane.showMessageDialog(this, "Nome ou senha incorretos.");
                 }
-                return;
             }
-
-            // Tenta encontrar professor (aqui, sem senha)
-            Professor professor = cadastro.buscarProfessorPorCpf(cpf);
-            if (professor != null) {
-                app.setCurrentProfessor(professor);
-                JOptionPane.showMessageDialog(this, "Login do professor realizado com sucesso!");
-                app.showProfessorDashboard();
-                return;
-            }
-
-            JOptionPane.showMessageDialog(this, "CPF não cadastrado.");
         });
         JLabel titulo2 = new JLabel("Ainda não sou membro", JLabel.CENTER);
         titulo2.setFont(new Font("Arial", Font.BOLD, 28));

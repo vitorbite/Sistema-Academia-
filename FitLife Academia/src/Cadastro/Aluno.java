@@ -2,8 +2,9 @@ package Cadastro;
 
 import Planos.Plano;
 import java.util.ArrayList; 
-import java.util.List; 
+import java.util.List;
 
+import Financeiro.Fatura;
 import Modalidades.Modalidade;
 
 public class Aluno extends Pessoa {
@@ -13,9 +14,8 @@ public class Aluno extends Pessoa {
     private ArrayList<Modalidade> modalidades;
 
     private static final int MAX_MODALIDADES = 10;
-
-    // NOVO: Histórico de Treinos
     private List<RegistroTreino> historicoTreinos;
+    private List<Fatura> historicoFaturas;
 
     public Aluno(String nome, int idade, String cpf, String senha, Plano plano) {
         super(nome, idade, cpf);
@@ -23,7 +23,9 @@ public class Aluno extends Pessoa {
         this.plano = plano;
         this.modalidades = new ArrayList<>();
         this.historicoTreinos = new ArrayList<>();
+        this.historicoFaturas = new ArrayList<>();
     }
+
 
     @Override
     public String getTipo() {
@@ -35,12 +37,14 @@ public class Aluno extends Pessoa {
         if (modalidade == null)
             return;
 
-        if (modalidades.size() == 10) {
-            return;
+        for (int i = 0; i < modalidades.size(); i++) {
+            if (modalidades.get(i) == null) {
+                modalidades.add(i, modalidade);
+                return;
+            }
         }
 
-        modalidades.add(modalidade);
-
+        System.out.println("Não foi possível inscrever: limite de modalidades atingido.");
     }
 
     
@@ -68,11 +72,9 @@ public class Aluno extends Pessoa {
     public List<RegistroTreino> getHistoricoTreinos() {
         return historicoTreinos;
     }
-
     public String getSenha() {
         return senha;
     }
-
     public void setSenha(String senha) {
         this.senha = senha;
     }
@@ -99,6 +101,14 @@ public class Aluno extends Pessoa {
 
     public boolean isVip() {
         return plano.eVIP();
+    }
+    
+    public void adicionarFatura(Fatura fatura) {
+        this.historicoFaturas.add(fatura);
+    }
+
+    public List<Fatura> getHistoricoFaturas() { // 4. Novo método
+        return historicoFaturas;
     }
 
 }
