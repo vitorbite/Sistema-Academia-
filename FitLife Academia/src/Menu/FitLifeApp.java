@@ -21,10 +21,8 @@ public class FitLifeApp extends JFrame {
         cards = new CardLayout();
         container = new JPanel(cards);
 
-        // Instância única de cadastro
         cadastro = CadastroAcademico.getInstance();
-        
-        // Telas
+    
         LoginPanel login = new LoginPanel(this, cadastro);
         Inscrever inscrever = new Inscrever(this, cadastro);
         AlunoFormPanel alunoForm = new AlunoFormPanel(this, cadastro);
@@ -34,7 +32,6 @@ public class FitLifeApp extends JFrame {
         professorDashboard = new ProfessorDashboardPanel(this, cadastro);
         PagamentoPanel pagamentoPanel = new PagamentoPanel(this, cadastro);
 
-        // Adiciona ao container
         container.add(login, "login");
         container.add(inscrever, "inscrever");
         container.add(alunoForm, "alunoForm");
