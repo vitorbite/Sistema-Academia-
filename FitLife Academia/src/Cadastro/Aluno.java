@@ -1,7 +1,7 @@
 package Cadastro;
 
 import Planos.Plano;
-import java.util.ArrayList; 
+import java.util.ArrayList;
 import java.util.List;
 
 import Financeiro.Fatura;
@@ -13,7 +13,6 @@ public class Aluno extends Pessoa {
     private int frequencia = 0;
     private ArrayList<Modalidade> modalidades;
 
-    private static final int MAX_MODALIDADES = 10;
     private List<RegistroTreino> historicoTreinos;
     private List<Fatura> historicoFaturas;
 
@@ -26,7 +25,6 @@ public class Aluno extends Pessoa {
         this.historicoFaturas = new ArrayList<>();
     }
 
-
     @Override
     public String getTipo() {
         return plano.eVIP() ? "ALUNO VIP" : "ALUNO";
@@ -37,20 +35,17 @@ public class Aluno extends Pessoa {
         if (modalidade == null)
             return;
 
-        for (int i = 0; i < modalidades.size(); i++) {
-            if (modalidades.get(i) == null) {
-                modalidades.add(i, modalidade);
-                return;
-            }
+        if (modalidades.size() == 10) {
+            return;
         }
 
-        System.out.println("Não foi possível inscrever: limite de modalidades atingido.");
+        modalidades.add(modalidade);
+
     }
 
-    
     public void adicionarRegistroTreino(RegistroTreino registro) {
         this.historicoTreinos.add(registro);
-        this.frequencia++; 
+        this.frequencia++;
     }
 
     public void alertaDeFrequenciaBaixa() {
@@ -68,13 +63,14 @@ public class Aluno extends Pessoa {
         }
     }
 
-    
     public List<RegistroTreino> getHistoricoTreinos() {
         return historicoTreinos;
     }
+
     public String getSenha() {
         return senha;
     }
+
     public void setSenha(String senha) {
         this.senha = senha;
     }
@@ -102,7 +98,7 @@ public class Aluno extends Pessoa {
     public boolean isVip() {
         return plano.eVIP();
     }
-    
+
     public void adicionarFatura(Fatura fatura) {
         this.historicoFaturas.add(fatura);
     }

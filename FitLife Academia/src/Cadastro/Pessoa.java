@@ -20,6 +20,10 @@ public abstract class Pessoa {
         return cpf;
     }
 
+    public int getIdade() {
+        return idade;
+    }
+
     public abstract String getTipo();
 }
 

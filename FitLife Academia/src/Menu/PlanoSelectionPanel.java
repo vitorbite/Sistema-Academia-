@@ -21,17 +21,17 @@ public class PlanoSelectionPanel extends JPanel {
         center.setBorder(BorderFactory.createEmptyBorder(16, 16, 16, 16));
 
         // Mensal
-        JPanel mensalPanel = createCard("Mensal", "R$ 149.90\n30 dias"); // Valor atualizado
+        JPanel mensalPanel = createCard("Mensal", "R$ 129.99\n30 dias");
         JButton btnMensal = new JButton("Selecionar");
         mensalPanel.add(btnMensal, BorderLayout.SOUTH);
 
         // VIP
-        JPanel vipPanel = createCard("VIP", "R$ 199.90\n30 dias\nBenefícios VIP"); // Valor atualizado
+        JPanel vipPanel = createCard("VIP", "R$ 179.90\n30 dias\nBenefícios VIP");
         JButton btnVIP = new JButton("Selecionar");
         vipPanel.add(btnVIP, BorderLayout.SOUTH);
 
         // Anual
-        JPanel anualPanel = createCard("Anual", "R$ 399.90\n365 dias"); // Valor atualizado
+        JPanel anualPanel = createCard("Anual", "R$ 95.90 Mensalmente\n365 dias");
         JButton btnAnual = new JButton("Selecionar");
         anualPanel.add(btnAnual, BorderLayout.SOUTH);
 
@@ -53,7 +53,8 @@ public class PlanoSelectionPanel extends JPanel {
             if (a != null) {
                 a.setPlano(new Mensal());
                 JOptionPane.showMessageDialog(this, "Plano Mensal aplicado para " + a.getNome());
-                app.showScreen("alunoLogin");
+                app.refreshStudentDashboard();
+                app.showScreen("studentDashboard");
             }
         });
 
@@ -62,7 +63,8 @@ public class PlanoSelectionPanel extends JPanel {
             if (a != null) {
                 a.setPlano(new VIP());
                 JOptionPane.showMessageDialog(this, "Plano VIP aplicado para " + a.getNome());
-                app.showScreen("alunoLogin");
+                app.refreshStudentDashboard();
+                app.showScreen("studentDashboard");
             }
         });
 
@@ -71,7 +73,8 @@ public class PlanoSelectionPanel extends JPanel {
             if (a != null) {
                 a.setPlano(new Anual());
                 JOptionPane.showMessageDialog(this, "Plano Anual aplicado para " + a.getNome());
-                app.showScreen("alunoLogin");
+                app.refreshStudentDashboard();
+                app.showScreen("studentDashboard");
             }
         });
     }
