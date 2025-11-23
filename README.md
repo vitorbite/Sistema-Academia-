@@ -23,10 +23,10 @@ A maneira mais fácil e robusta é usar um Ambiente de Desenvolvimento Integrado
 
 Abra a IDE (NetBeans, IntelliJ IDEA ou Eclipse).
 
-Selecione a opção "Abrir Projeto" e navegue até a pasta raiz do projeto baixado (Sistema-Academia-).
+Selecione a opção "Abrir Projeto" e navegue até a pasta FitLife Academia/src do projeto baixado (Sistema-Academia-).
 
 A IDE deve reconhecer a estrutura do projeto Java.
 
-Localize a classe principal que contém o método main (geralmente em src/main/java/ ou similar).
+Localize a classe principal que contém o método main (em FitLife Academia/src/main.java).
 
 Clique com o botão direito no projeto ou na classe principal e selecione "Executar" (ou use o atalho/botão de Play).
