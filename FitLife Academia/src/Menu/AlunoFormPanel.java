@@ -83,13 +83,10 @@ class AlunoFormPanel extends JPanel {
             if (cbPilates.isSelected()) {
                 aluno.inscreverEmModalidade(new Pilates());
             }
-
-            // Armazena o aluno atual na aplicação
+            
             app.setCurrentAluno(aluno);
-            // Atualiza a UI do dashboard do aluno
             app.refreshStudentDashboard();
-
-            // Limpa o formulário para a próxima utilização
+            
             nome.setText("");
             idade.setText("");
             cpf.setText("");
@@ -99,7 +96,6 @@ class AlunoFormPanel extends JPanel {
             cbMusculacao.setSelected(false);
             cbPilates.setSelected(false);
 
-            // Navega para a seleção de planos
             app.showScreen("planos");
         });
 
@@ -116,7 +112,6 @@ class AlunoFormPanel extends JPanel {
 
         voltar.addActionListener(e -> app.showScreen("inscrever"));
 
-        // Grid
         int row = 0;
         c.gridx = 0;
         c.gridy = row;
@@ -139,7 +134,6 @@ class AlunoFormPanel extends JPanel {
         c.gridy = row++;
         form.add(cpf, c);
 
-        // Adicionar no grid:
         c.gridx = 0;
         c.gridy = row;
         form.add(new JLabel("Modalidades:"), c);

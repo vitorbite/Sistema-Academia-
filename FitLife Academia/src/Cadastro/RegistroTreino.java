@@ -1,18 +1,15 @@
 package Cadastro;
-// FitLife Academia/src/RegistroTreino.java
-
 import java.time.LocalDate;
-
 import Modalidades.Modalidade;
 
 public class RegistroTreino {
     private LocalDate data;
     private Modalidade modalidade;
-    private String detalhesDoTreino; // Ex: Exercícios, séries, repetições, carga
-    private String progressoObservado; // Ex: Aumento de peso, melhora na performance, notas do professor
+    private String detalhesDoTreino; 
+    private String progressoObservado; 
 
     public RegistroTreino(Modalidade modalidade, String detalhesDoTreino, String progressoObservado) {
-        this.data = LocalDate.now(); // Define a data automaticamente
+        this.data = LocalDate.now();
         this.modalidade = modalidade;
         this.detalhesDoTreino = detalhesDoTreino;
         this.progressoObservado = progressoObservado;

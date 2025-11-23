@@ -20,7 +20,7 @@ public class GestorFinanceiro {
         return instance;
     }
 
-    // Gera uma nova fatura com base no plano e duração do aluno
+    
     public Fatura gerarNovaFatura(Aluno aluno) {
         return gerarNovaFatura(aluno, false);
     }
@@ -61,16 +61,12 @@ public class GestorFinanceiro {
         aluno.adicionarFatura(novaFatura);
         return novaFatura;
     }
-
-    // Registra o pagamento de uma fatura
+    
     public boolean registrarPagamento(Fatura fatura) {
-        // **Aqui seria o ponto de integração com um serviço de pagamento real.**
         return fatura.processarPagamento();
     }
     
-    // Busca todas as faturas da academia
     public List<Fatura> getFaturas() {
-        // Antes de retornar, verifica o status de atraso de todas
         for(Fatura f : faturas) {
             f.verificarAtraso();
         }
