@@ -1,17 +1,21 @@
+package Menu;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import Cadastro.*;
+import Cadastro.CadastroAcademico;
+
 
 public class MenuProfessor {
 
     private final Professor professor;       
-    private final CadastroAcademia cadastro; 
+    private final CadastroAcademico cadastro; 
 
     private Map<String, List<Aluno>> alunosPorHorario = new HashMap<>();
     private int aulasCanceladas = 0;
 
-    public MenuProfessor(Professor professor, CadastroAcademia cadastro) {
+    public MenuProfessor(Professor professor, CadastroAcademico cadastro) {
         this.professor = professor;
         this.cadastro = cadastro;
     }
@@ -102,5 +106,21 @@ public class MenuProfessor {
 
         aluno.setFrequencia(aluno.getFrequencia() + 1);
 
-        System.out.println("Presença registrada para " + aluno.getNome() +
-                " no horário "
+        System.out.println("Presença registrada para " + aluno.getNome() + " no horário " + horario + ".");
+    }
+    public void cancelarAula(String horario) {
+        if (horario == null || horario.isEmpty()) {
+            System.out.println("Horário inválido.");
+            return;
+        }
+
+        if (!professor.getHorarios().contains(horario)) {
+            System.out.println("Horário não pertence ao professor.");
+            return;
+        }
+
+        aulasCanceladas++;
+        System.out.println("Aula no horário " + horario + " foi cancelada. Total de aulas canceladas: " + aulasCanceladas);
+    }
+}
+
