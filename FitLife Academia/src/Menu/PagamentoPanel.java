@@ -15,8 +15,10 @@ public class PagamentoPanel extends JPanel {
     private DefaultListModel<String> faturaListModel;
     private JList<String> faturaJList;
     private GestorFinanceiro gestorFinanceiro = GestorFinanceiro.getInstance();
+    private FitLifeApp app;
 
     public PagamentoPanel(FitLifeApp app, CadastroAcademico cadastro) {
+        this.app = app;
         setLayout(new BorderLayout());
 
         JLabel titulo = new JLabel("Gestão de Pagamentos", JLabel.CENTER);
@@ -69,7 +71,16 @@ public class PagamentoPanel extends JPanel {
             }
         });
 
-        btnVoltar.addActionListener(e -> app.showScreen("dashboard"));
+        btnVoltar.addActionListener(e -> {
+            // Volta para o dashboard apropriado conforme tipo de usuário logado
+            if (app.getCurrentAluno() != null) {
+                app.showScreen("studentDashboard");
+            } else if (app.getCurrentProfessor() != null) {
+                app.showScreen("professorDashboard");
+            } else {
+                app.showScreen("login");
+            }
+        });
 
         actions.add(btnCarregar);
         actions.add(btnGerarFatura);
@@ -82,8 +93,18 @@ public class PagamentoPanel extends JPanel {
     
     private void carregarTodasFaturas() {
         faturaListModel.clear();
-        for (Fatura f : gestorFinanceiro.getFaturas()) {
-            faturaListModel.addElement(f.toString());
+        // Se um aluno estiver logado, mostra apenas as faturas dele; senão, mostra todas
+        boolean mostrarApenasAlunoAtual = (app.getCurrentAluno() != null && app.getCurrentProfessor() == null);
+        java.util.List<Fatura> todas = gestorFinanceiro.getFaturas();
+        for (Fatura f : todas) {
+            if (mostrarApenasAlunoAtual) {
+                if (f.getAluno() != null && app.getCurrentAluno() != null &&
+                        f.getAluno().getCpf().equals(app.getCurrentAluno().getCpf())) {
+                    faturaListModel.addElement(f.toString());
+                }
+            } else {
+                faturaListModel.addElement(f.toString());
+            }
         }
     }
 }

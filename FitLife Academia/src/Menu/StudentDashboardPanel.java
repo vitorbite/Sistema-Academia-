@@ -34,13 +34,14 @@ public class StudentDashboardPanel extends JPanel {
 
         JButton btnVerPlano = new JButton("Ver Plano");
         JButton btnVerModalidades = new JButton("Ver Modalidades");
+        JButton btnPagamentos = new JButton("Pagamentos");
         JButton btnHistorico = new JButton("Histórico de Treinos");
         JButton btnPresenca = new JButton("Registrar Presença");
         JButton btnCancelar = new JButton("Cancelar Matrícula");
         JButton btnSair = new JButton("Sair");
 
         Dimension btnSize = new Dimension(160, 28);
-        for (JButton b : new JButton[]{btnVerPlano, btnVerModalidades, btnHistorico, btnPresenca, btnCancelar, btnSair}) {
+        for (JButton b : new JButton[]{btnVerPlano, btnVerModalidades, btnPagamentos, btnHistorico, btnPresenca, btnCancelar, btnSair}) {
             b.setMaximumSize(btnSize);
             b.setAlignmentX(Component.CENTER_ALIGNMENT);
             actions.add(b);
@@ -53,6 +54,7 @@ public class StudentDashboardPanel extends JPanel {
         // listeners
         btnVerPlano.addActionListener(e -> showPlano());
         btnVerModalidades.addActionListener(e -> showModalidades());
+        btnPagamentos.addActionListener(e -> app.showScreen("pagamentos"));
         btnHistorico.addActionListener(e -> showHistorico());
         btnPresenca.addActionListener(e -> registrarPresenca());
         btnCancelar.addActionListener(e -> cancelarMatricula());

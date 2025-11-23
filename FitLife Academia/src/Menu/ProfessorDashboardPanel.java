@@ -22,10 +22,13 @@ public class ProfessorDashboardPanel extends JPanel {
         add(lblInfo, BorderLayout.CENTER);
 
         JPanel actions = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JButton btnPagamentos = new JButton("Pagamentos");
         JButton btnSair = new JButton("Sair");
+        actions.add(btnPagamentos);
         actions.add(btnSair);
         add(actions, BorderLayout.SOUTH);
 
+        btnPagamentos.addActionListener(e -> app.showScreen("pagamentos"));
         btnSair.addActionListener(e -> app.showScreen("login"));
     }
 
