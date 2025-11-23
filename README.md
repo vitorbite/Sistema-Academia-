@@ -1,4 +1,4 @@
-📥 Passo a Passo para Baixar e Executar
+Passo a Passo para Baixar e Executar
 1. Instalar o Java Development Kit (JDK) e/ou uma IDE(IntelliJ IDEA (Recomendado), Eclipse)
 O Java Development Kit (JDK) é o ambiente necessário para rodar o código.
 
