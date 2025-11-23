@@ -35,8 +35,9 @@ class LoginPanel extends JPanel {
 
             // Admin shortcut
             if (cpf.equals("academia") && senha.equals("123")) {
-                JOptionPane.showMessageDialog(this, "Login realizado com sucesso!");
-                app.showScreen("dashboard");
+                JOptionPane.showMessageDialog(this, "Login de administrador realizado com sucesso!");
+                // admin: não seta aluno nem professor; vai para painel administrativo
+                app.showScreen("adminDashboard");
                 return;
             }
 

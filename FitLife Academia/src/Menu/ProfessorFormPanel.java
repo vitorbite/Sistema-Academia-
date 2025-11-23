@@ -42,6 +42,14 @@ class ProfessorFormPanel extends JPanel {
             String reg = registro.getText().trim();
             String esp = especialidade.getText().trim();
 
+            String cpfVal = cpf.getText().trim();
+            // Validação de CPF: remover caracteres não dígitos e checar comprimento (11 dígitos)
+            String cpfDigits = cpfVal.replaceAll("\\D", "");
+            if (cpfDigits.length() != 11) {
+                JOptionPane.showMessageDialog(this, "CPF inválido. Informe 11 dígitos (apenas números). Ex: 12345678909");
+                return;
+            }
+
             if (n.isEmpty() || reg.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Preencha Nome e Registro (CREF).");
                 return;
@@ -58,7 +66,8 @@ class ProfessorFormPanel extends JPanel {
                 horario = hi + " - " + hf;
             }
 
-            Professor p = new Professor(n, Integer.parseInt(i.isEmpty()? "30": i), reg);
+            // Usa o cpf informado no formulário para criar o professor
+            Professor p = new Professor(n, Integer.parseInt(i.isEmpty()? "30": i), cpfDigits);
             if (!esp.isEmpty()) {
                 p.adicionarTipoExercicio(esp);
             }

@@ -52,6 +52,12 @@ public class PlanoSelectionPanel extends JPanel {
             Aluno a = app.getCurrentAluno();
             if (a != null) {
                 a.setPlano(new Mensal());
+                // Gerar fatura automaticamente quando o aluno escolhe o plano
+                try {
+                    Financeiro.GestorFinanceiro.getInstance().gerarNovaFatura(a);
+                } catch (Exception ex) {
+                    System.out.println("Erro ao gerar fatura após seleção de plano: " + ex.getMessage());
+                }
                 JOptionPane.showMessageDialog(this, "Plano Mensal aplicado para " + a.getNome());
                 app.refreshStudentDashboard();
                 app.showScreen("studentDashboard");
@@ -62,6 +68,11 @@ public class PlanoSelectionPanel extends JPanel {
             Aluno a = app.getCurrentAluno();
             if (a != null) {
                 a.setPlano(new VIP());
+                try {
+                    Financeiro.GestorFinanceiro.getInstance().gerarNovaFatura(a);
+                } catch (Exception ex) {
+                    System.out.println("Erro ao gerar fatura após seleção de plano: " + ex.getMessage());
+                }
                 JOptionPane.showMessageDialog(this, "Plano VIP aplicado para " + a.getNome());
                 app.refreshStudentDashboard();
                 app.showScreen("studentDashboard");
@@ -72,6 +83,11 @@ public class PlanoSelectionPanel extends JPanel {
             Aluno a = app.getCurrentAluno();
             if (a != null) {
                 a.setPlano(new Anual());
+                try {
+                    Financeiro.GestorFinanceiro.getInstance().gerarNovaFatura(a);
+                } catch (Exception ex) {
+                    System.out.println("Erro ao gerar fatura após seleção de plano: " + ex.getMessage());
+                }
                 JOptionPane.showMessageDialog(this, "Plano Anual aplicado para " + a.getNome());
                 app.refreshStudentDashboard();
                 app.showScreen("studentDashboard");

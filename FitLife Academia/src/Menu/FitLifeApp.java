@@ -11,6 +11,8 @@ public class FitLifeApp extends JFrame {
     private Professor currentProfessor;
     private StudentDashboardPanel studentDashboard;
     private ProfessorDashboardPanel professorDashboard;
+    private PagamentoPanel pagamentoPanel;
+    private AdminDashboardPanel adminDashboard;
 
     public FitLifeApp() {
         super("FitLife");
@@ -32,7 +34,19 @@ public class FitLifeApp extends JFrame {
         PlanoSelectionPanel planoSelection = new PlanoSelectionPanel(this, cadastro);
         studentDashboard = new StudentDashboardPanel(this, cadastro);
         professorDashboard = new ProfessorDashboardPanel(this, cadastro);
-        PagamentoPanel pagamentoPanel = new PagamentoPanel(this, cadastro);
+        pagamentoPanel = new PagamentoPanel(this, cadastro);
+        adminDashboard = new AdminDashboardPanel(this, cadastro);
+
+        // Gera faturas iniciais automaticamente para alunos existentes somente se já possuem plano
+        for (Aluno a : cadastro.getAlunos()) {
+            try {
+                if ((a.getHistoricoFaturas() == null || a.getHistoricoFaturas().isEmpty()) && a.getPlano() != null && a.getPlano().getValor() > 0) {
+                    Financeiro.GestorFinanceiro.getInstance().gerarNovaFatura(a);
+                }
+            } catch (Exception ex) {
+                System.out.println("Erro ao gerar fatura inicial para " + a.getNome() + ": " + ex.getMessage());
+            }
+        }
 
         // Adiciona ao container
         container.add(login, "login");
@@ -43,12 +57,17 @@ public class FitLifeApp extends JFrame {
         container.add(studentDashboard, "studentDashboard");
         container.add(professorDashboard, "professorDashboard");
         container.add(pagamentoPanel, "pagamentos");
+        container.add(adminDashboard, "adminDashboard");
 
         add(container);
         showScreen("login");
     }
 
     public void showScreen(String name) {
+        // refresh specific panels before showing
+        if ("studentDashboard".equals(name)) refreshStudentDashboard();
+        if ("professorDashboard".equals(name)) refreshProfessorDashboard();
+        if ("pagamentos".equals(name) && pagamentoPanel != null) pagamentoPanel.refresh();
         cards.show(container, name);
     }
 

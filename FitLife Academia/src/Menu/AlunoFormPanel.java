@@ -55,6 +55,12 @@ class AlunoFormPanel extends JPanel {
             String n = nome.getText().trim();
             String i = idade.getText().trim();
             String cpfVal = cpf.getText().trim();
+            // Validação de CPF: remover caracteres não dígitos e checar comprimento (11 dígitos)
+            String cpfDigits = cpfVal.replaceAll("\\D", "");
+            if (cpfDigits.length() != 11) {
+                JOptionPane.showMessageDialog(this, "CPF inválido. Informe 11 dígitos (apenas números). Ex: 12345678909");
+                return;
+            }
             String s = senha.getText().trim();
             String cS = confirmarSenha.getText().trim();
 
@@ -66,7 +72,7 @@ class AlunoFormPanel extends JPanel {
                 JOptionPane.showMessageDialog(this, "Selecione pelo menos uma modalidade!");
                 return;
             }
-            Aluno aluno = cadastro.cadastrarAluno(new Aluno(n, Integer.parseInt(i), cpfVal, s, new Plano()));
+            Aluno aluno = cadastro.cadastrarAluno(new Aluno(n, Integer.parseInt(i), cpfDigits, s, new Plano()));
             // Aqui você pode integrar com sua camada de dados
             if (cbYoga.isSelected()) {
                 aluno.inscreverEmModalidade(new Yoga());
